@@ -3,18 +3,18 @@ Spaced repetition module which can be used as a mixin in Ruby apps. SuperMemo 2 
 
 ### Installation
 Add to your Gemfile
-	gem 'repetition'
+    gem 'repetition'
 or install from RubyGems
-	gem install repetition
+    gem install repetition
 
 ### Usage
 Include module in your class or ActiveRecord model
-'''ruby
+```ruby
 class Card < ActiveRecord::Base
   # some code
   include Repetition
 end
-'''
+```
 
 This will add a bunch of properties to your model:
 * easyness_factor
@@ -35,3 +35,7 @@ card.process_recall_result(4)
 card.repetition_interval # => 1
 card.next_repetition # Tomorrow
 '''
+
+### Changelog
+#### 1.0
+* Initial version
