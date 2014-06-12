@@ -1,8 +1,8 @@
 module Repetition
   def reset_spaced_repetition_data
-    self.easiness_factor = 2.5  
-    self.number_repetitions = 0  
-    self.quality_of_last_recall = nil  
+    self.easiness_factor = 2.5
+    self.number_repetitions = 0
+    self.quality_of_last_recall = nil
     self.repetition_interval = nil
     self.next_repetition = nil
     self.last_studied = nil
@@ -13,7 +13,7 @@ module Repetition
       raise 'Invalid quality of recall. Should be in range from 0 to 5.'
     end
     
-    if quality_of_recall < 3    
+    if quality_of_recall < 2
       self.number_repetitions = 0 
       self.repetition_interval = 0
     else
