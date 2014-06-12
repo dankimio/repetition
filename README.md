@@ -3,8 +3,11 @@ Spaced repetition module which can be used as a mixin in Ruby apps. SuperMemo 2 
 
 ### Installation
 Add to your Gemfile
+
     gem 'repetition'
+
 or install from RubyGems
+
     gem install repetition
 
 ### Usage
@@ -26,16 +29,19 @@ This will add a bunch of properties to your model:
 
 Make sure that appropriate fields are created in your database using migrations
 
-You can now use all methods that are provided by gem, use 'process_recall_result(quality)' method to update next repetition date. Method takes one argument which should be integer in range from 0 to 5 (0 - again, 5 - perfect).
-'''ruby
+You can now use all methods that are provided by gem, use `process_recall_result(quality)` method to update next repetition date. Method takes one argument which should be integer in range from 0 to 5 (0 - again, 5 - perfect).
+```ruby
 card = Card.first
 card.next_repetition # => nil
 card.process_recall_result(4)
 
 card.repetition_interval # => 1
 card.next_repetition # Tomorrow
-'''
+```
 
 ### Changelog
 #### 1.0
 * Initial version
+
+### Contributing
+Contributions are welcome! Feel free to post issues and create pull requests.
