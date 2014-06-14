@@ -32,11 +32,14 @@ Make sure that appropriate fields are created in your database using migrations
 You can now use all methods that are provided by gem, use `process_recall_result(quality)` method to update next repetition date. Method takes one argument which should be integer in range from 0 to 5 (0 - again, 5 - perfect).
 ```ruby
 card = Card.first
+card.reset_spaced_repetition_data # Reset data for first use
+
 card.next_repetition # => nil
 card.process_recall_result(4)
 
 card.repetition_interval # => 1
 card.next_repetition # Tomorrow
+card.save # Don't forget to save your card!
 ```
 
 ### Changelog

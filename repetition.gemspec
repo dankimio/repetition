@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.files = ['lib/repetition.rb']
   s.homepage = 'http://github.com/danyakim/repetition'
   s.license = 'MIT'
+  s.add_development_dependency 'rspec'
 end
