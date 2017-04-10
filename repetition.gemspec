@@ -6,12 +6,13 @@ require 'repetition/version'
 Gem::Specification.new do |spec|
   spec.name          = "repetition"
   spec.version       = Repetition::VERSION
-  spec.authors       = ["Dan Kim", "Scott Harvey"]
-  spec.email         = []
+  spec.authors       = ["Dan Kim"]
+  spec.email         = ["itsdanya@gmail.com"]
 
-  spec.summary       = %q{Spaced repetition algorithm module that can be used as a mixin in Ruby apps}
+  spec.summary       = %q{Spaced repetition algorithm}
   spec.description   = %q{Spaced repetition algorithm module that can be used as a mixin in Ruby apps}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/danyakim/repetition"
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
