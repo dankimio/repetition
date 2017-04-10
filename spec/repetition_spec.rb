@@ -11,6 +11,10 @@ describe Repetition do
     @card.reset_spaced_repetition_data
   end
 
+  it 'has a version number' do
+    expect(Repetition::VERSION).not_to be nil
+  end
+
   it 'works when included' do
     @card.should respond_to :easiness_factor, :number_repetitions, :quality_of_last_recall, :next_repetition, :repetition_interval, :last_studied
   end

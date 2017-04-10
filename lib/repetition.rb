@@ -1,3 +1,5 @@
+require "repetition/version"
+
 module Repetition
   def reset_spaced_repetition_data
     self.easiness_factor = 2.5
@@ -10,15 +12,15 @@ module Repetition
 
   def process_recall_result(quality_of_recall)
     unless (1..5).include?(quality_of_recall)
-      raise 'Invalid quality of recall. Should be in range from 0 to 5.'
+      raise 'Invalid quality of recall. Should be in range from 1 to 5.'
     end
-    
+
     if quality_of_recall < 3
-      self.number_repetitions = 0 
+      self.number_repetitions = 0
       self.repetition_interval = 0
     else
       self.easiness_factor = calculate_easiness_factor(easiness_factor, quality_of_recall)
-    
+
       if quality_of_recall == 3
         self.repetition_interval = 0
       else
@@ -34,7 +36,7 @@ module Repetition
         end
       end
     end
-    
+
     self.next_repetition = Date.today + repetition_interval
     self.last_studied = Date.today
   end
@@ -42,9 +44,9 @@ module Repetition
   def scheduled_to_recall?
     !next_repetition.nil? && next_repetition <= Date.today
   end
-  
-  private 
-  
+
+  private
+
   def calculate_easiness_factor(easiness_factor, quality_of_recall)
     q = quality_of_recall
     ef_old = easiness_factor
