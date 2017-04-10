@@ -1,4 +1,6 @@
-require "repetition/version"
+require 'repetition/version'
+
+require 'date'
 
 module Repetition
   def reset_spaced_repetition_data
