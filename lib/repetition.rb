@@ -13,8 +13,8 @@ module Repetition
   end
 
   def process_recall_result(quality_of_recall)
-    unless (1..5).include?(quality_of_recall)
-      raise 'Invalid quality of recall. Should be in range from 1 to 5.'
+    unless (0..5).include?(quality_of_recall)
+      raise 'Invalid quality of recall. Should be in range from 0 to 5.'
     end
 
     if quality_of_recall < 3
