@@ -10,6 +10,21 @@ or install from RubyGems
 
     gem install repetition
 
+
+### Rails
+
+Create a migration to add the new fields to your model.
+```ruby
+change_table :cards do |t|
+  t.decimal :easiness_factor, precision: 2, scale: 1, default: 2.5, null: false
+  t.integer :number_repetitions, default: 0, null: false
+  t.integer :quality_of_last_recall
+  t.date :next_repetition
+  t.integer :repetition_interval
+  t.date :last_studied
+end
+```
+
 ### Usage
 Include module in your class or ActiveRecord model
 ```ruby
