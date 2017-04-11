@@ -20,7 +20,6 @@ module Repetition
     end
 
     # Initialize values if they aren't set
-    self.easiness_factor ||= 2.5
     self.number_repetitions ||= 0
     self.repetition_interval ||= 0
 
@@ -43,7 +42,7 @@ module Repetition
       when 2
         self.repetition_interval = 6
       else
-        self.easiness_factor = calculate_easiness_factor(easiness_factor, quality_of_recall)
+        easiness_factor = calculate_easiness_factor(easiness_factor, quality_of_recall)
         self.repetition_interval = repetition_interval * easiness_factor
       end
     end

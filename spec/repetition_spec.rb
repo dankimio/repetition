@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Repetition do
   before :each do
     class Test
-      attr_accessor :easiness_factor, :number_repetitions, :next_repetition, :repetition_interval, :last_studied
+      attr_accessor :number_repetitions, :next_repetition, :repetition_interval, :last_studied
 
       include Repetition
     end
@@ -15,7 +15,7 @@ describe Repetition do
   end
 
   it 'works when included' do
-    expect(@card).to respond_to :easiness_factor, :number_repetitions, :next_repetition, :repetition_interval, :last_studied
+    expect(@card).to respond_to :number_repetitions, :next_repetition, :repetition_interval, :last_studied
   end
 
   it 'schedules for tommorow when interval = 0 and quality = 4' do
@@ -25,7 +25,6 @@ describe Repetition do
     expect(@card.repetition_interval).to eq(1)
     expect(@card.last_studied).to eq(Date.today)
     expect(@card.next_repetition).to eq(Date.today + 1)
-    expect(@card.easiness_factor).to be_within(2.5).of(0.01)
   end
 
   it 'schedules for 6 days when interval = 1 and quality = 4' do
@@ -36,7 +35,6 @@ describe Repetition do
     expect(@card.repetition_interval).to eq(6)
     expect(@card.last_studied).to eq(Date.today)
     expect(@card.next_repetition).to eq(Date.today + 6)
-    expect(@card.easiness_factor).to be_within(2.5).of(0.01)
   end
 
   it 'reports as scheduled for today' do
