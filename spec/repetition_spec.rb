@@ -24,7 +24,7 @@ describe Repetition do
     @card.number_repetitions.should == 0
     @card.quality_of_last_recall.should == nil
     @card.next_repetition.should == nil
-    @card.repetition_interval.should == nil
+    @card.repetition_interval.should == 0
     @card.last_studied.should == nil
   end
 

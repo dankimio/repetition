@@ -5,12 +5,12 @@ module Repetition
     self.easiness_factor = 2.5
     self.number_repetitions = 0
     self.quality_of_last_recall = nil
-    self.repetition_interval = nil
+    self.repetition_interval = 0
     self.next_repetition = nil
     self.last_studied = nil
   end
 
-  def process_recall_result(quality_of_recall)
+  def process_recall_result(quality_of_recall, date_of_recall = Date.today)
     unless (1..5).include?(quality_of_recall)
       raise 'Invalid quality of recall. Should be in range from 1 to 5.'
     end
@@ -37,8 +37,8 @@ module Repetition
       end
     end
 
-    self.next_repetition = Date.today + repetition_interval
-    self.last_studied = Date.today
+    self.next_repetition = date_of_recall + repetition_interval
+    self.last_studied = date_of_recall
   end
 
   def scheduled_to_recall?
@@ -48,10 +48,7 @@ module Repetition
   private
 
   def calculate_easiness_factor(easiness_factor, quality_of_recall)
-    q = quality_of_recall
-    ef_old = easiness_factor
-
-    result = ef_old - 0.8 + (0.28 * q) - (0.02 * q * q)
+    result = easiness_factor - 0.8 + (0.28 * quality_of_recall) - (0.02 * quality_of_recall * quality_of_recall)
     result < 1.3 ? 1.3 : result
   end
 end
