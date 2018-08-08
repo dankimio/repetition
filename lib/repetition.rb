@@ -14,53 +14,57 @@
 
 require 'date'
 
-class Repetition
-  def initialize(interval: 0, easiness_factor: 2.5, repetitions: 0)
-    @easiness_factor = easiness_factor
-    @interval = interval
-    @repetitions = repetitions
-  end
+module Repetition
+  class Flashcard
+    attr_reader :easiness_factor, :interval, :repetitions
 
-  def recall(quality)
-    raise 'Invalid quality of recall. Should be in range from 0 to 5.' unless (0..5).cover?(quality)
-
-    if quality < 3
-      # An incorrect recall is reset back to the beginning
-      @repetitions = 0
-      @interval = 0
-    elsif quality == 3
-      # The item was correctly recalled but should be tested again quickly
-      @interval = 0
-    else
-      # The item was correctly recalled and we can review later on
-      @repetitions += 1
-
-      case @repetitions
-      when 1
-        @interval = 1
-      when 2
-        @interval = 6
-      else
-        @easiness_factor = calculate_easiness_factor(@easiness_factor, quality)
-        @interval = interval * easiness_factor
-      end
+    def initialize(easiness_factor: 2.5, interval: 0, repetitions: 0)
+      @easiness_factor = easiness_factor
+      @interval = interval
+      @repetitions = repetitions
     end
 
-    due_on
-  end
+    def recall(quality)
+      raise ArgumentError, 'Invalid quality of recall. Should be in range from 0 to 5.' unless (0..5).cover?(quality)
 
-  def due_on
-    today + @interval
-  end
+      if quality < 3
+        # An incorrect recall is reset back to the beginning
+        @repetitions = 0
+        @interval = 0
+      elsif quality == 3
+        # The item was correctly recalled but should be tested again quickly
+        @interval = 0
+      else
+        # The item was correctly recalled and we can review later on
+        @repetitions += 1
 
-  private
+        case @repetitions
+        when 1
+          @interval = 1
+        when 2
+          @interval = 6
+        else
+          @easiness_factor = calculate_easiness_factor(@easiness_factor, quality)
+          @interval = interval * easiness_factor
+        end
+      end
 
-  def today
-    @today ||= Date.today
-  end
+      due_on
+    end
 
-  def calculate_easiness_factor(easiness_factor, quality)
-    result = easiness_factor - 0.8 + (0.28 * quality) - (0.02 * quality * quality)
-    result < 1.3 ? 1.3 : result
+    def due_on
+      today + @interval
+    end
+
+    private
+
+    def today
+      @today ||= Date.today
+    end
+
+    def calculate_easiness_factor(easiness_factor, quality)
+      result = easiness_factor - 0.8 + (0.28 * quality) - (0.02 * quality * quality)
+      result < 1.3 ? 1.3 : result
+    end
   end
 end
