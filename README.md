@@ -1,20 +1,24 @@
-# Repetition gem
+# Repetition
 
 Spaced repetition module which can be used as a mixin in Ruby apps. SuperMemo 2 is used as a repetition algorithm.
 
-### Installation
+## Installation
 
-Add to your Gemfile
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'repetition'
 ```
 
-or install from RubyGems
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
 
     $ gem install repetition
 
-### Usage
+## Usage
 
 ```ruby
 # Default values are provided
@@ -24,10 +28,16 @@ repetition = Repetition.new(easiness_factor: 2.5, interval: 0, repetitions: 0)
 repetition.recall(4)
 ```
 
-### Running Specs
+## Development
 
-`bundle exec rake`
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-### Contributing
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-Contributions are welcome! Feel free to post issues and create pull requests.
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/dankimio/repetition.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
