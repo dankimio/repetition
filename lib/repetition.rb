@@ -22,9 +22,7 @@ class Repetition
   end
 
   def recall(quality)
-    unless (0..5).include?(quality)
-      raise 'Invalid quality of recall. Should be in range from 0 to 5.'
-    end
+    raise 'Invalid quality of recall. Should be in range from 0 to 5.' unless (0..5).cover?(quality)
 
     if quality < 3
       # An incorrect recall is reset back to the beginning
