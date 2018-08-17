@@ -1,6 +1,6 @@
 # Repetition
 
-Spaced repetition module which can be used as a mixin in Ruby apps. SuperMemo 2 is used as a repetition algorithm.
+Spaced repetition algorithm for scheduling flashcard repetitions. SuperMemo 2 is used as a repetition algorithm.
 
 ## Installation
 
