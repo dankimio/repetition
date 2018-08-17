@@ -45,7 +45,7 @@ module Repetition
           @interval = 6
         else
           @easiness_factor = calculate_easiness_factor(@easiness_factor, quality)
-          @interval = interval * easiness_factor
+          @interval = @interval * @easiness_factor
         end
       end
 

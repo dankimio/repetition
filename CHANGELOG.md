@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fix interval calculation bug
+
 ## [2.0.0] - 2018-08-08
 ### Changed
 - Move from module to class implementation
