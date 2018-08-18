@@ -17,6 +17,7 @@ require 'date'
 module Repetition
   class Flashcard
     attr_reader :easiness_factor, :interval, :repetitions
+    attr_reader :due_at, :due_on
 
     def initialize(easiness_factor: 2.5, interval: 0, repetitions: 0)
       @easiness_factor = easiness_factor
@@ -49,18 +50,11 @@ module Repetition
         end
       end
 
-      due_on
-    end
-
-    def due_on
-      today + @interval
+      @due_at = DateTime.now + @interval
+      @due_on = Date.today + @interval
     end
 
     private
-
-    def today
-      @today ||= Date.today
-    end
 
     def calculate_easiness_factor(easiness_factor, quality)
       result = easiness_factor - 0.8 + (0.28 * quality) - (0.02 * quality * quality)
