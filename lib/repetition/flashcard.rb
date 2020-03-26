@@ -26,7 +26,9 @@ module Repetition
     end
 
     def recall(quality)
-      raise ArgumentError, 'Invalid quality of recall. Should be in range from 0 to 5.' unless (0..5).cover?(quality)
+      unless (0..5).cover?(quality)
+        raise ArgumentError, 'Invalid quality of recall. Should be in range from 0 to 5.'
+      end
 
       if quality < 3
         # An incorrect recall is reset back to the beginning
@@ -46,7 +48,7 @@ module Repetition
           @interval = 6
         else
           @easiness_factor = calculate_easiness_factor(@easiness_factor, quality)
-          @interval = @interval * @easiness_factor
+          @interval *= @easiness_factor
         end
       end
 
