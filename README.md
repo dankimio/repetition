@@ -1,8 +1,5 @@
 # Repetition
 
-[![Gem Version](https://img.shields.io/gem/v/repetition.svg?style=flat&color=brightgreen)](https://rubygems.org/gems/repetition)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/dankimio/repetition/master/LICENSE.TXT)
-
 Spaced repetition algorithm for scheduling flashcard repetitions. SuperMemo 2 is used as a repetition algorithm.
 
 ## Installation
