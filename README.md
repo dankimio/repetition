@@ -1,6 +1,6 @@
 # Repetition
 
-Spaced repetition algorithm for scheduling flashcard repetitions. SuperMemo 2 is used as a repetition algorithm.
+Ruby implementation of the SuperMemo2 spaced-repetition algorithm. This gem allows you to easily incorporate the power of spaced repetition into your Ruby projects. The algorithm is based on the principles of increasing the interval between repetitions of learned material based on the user's performance, resulting in efficient and long-term retention of information. Simply add this gem to your project and start using the provided methods to incorporate spaced repetition into your application.
 
 ## Installation
 
